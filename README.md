@@ -63,7 +63,7 @@ python ScatterOverlay.py --help
 ```
 
 ### Reading the data
-Name your input gene expression data as ```data.csv``` and place it in the ```ScatterOverlay``` folder. By default, the first 4 samples in the data are used for the plots. If you would like to read in different ```samples``` from the file (e.g. columns 2, 4, 6, 8), run the following: </br>
+Name your input gene expression data as ```data.csv``` and place it in the ```ScatterOverlay-master``` folder. By default, the first 4 samples in the data are used for the plots. If you would like to read in different ```samples``` from the file (e.g. columns 2, 4, 6, 8), run the following: </br>
 
 ```
 python ScatterOverlay.py -samples 2,4,6,8
