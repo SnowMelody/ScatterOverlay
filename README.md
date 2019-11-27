@@ -40,7 +40,7 @@ You should see these plots being displayed below. Overlapping regions are denote
 
 
 ### Gene expression data format
-The input gene expression data is expected in comma-spearated values ```csv``` format, where rows are *genes* and columns are *samples*. The demo file ```demo.csv``` shows the expected format.
+The input gene expression data is expected in comma-separated values ```csv``` format, where rows are *genes* and columns are *samples*. The demo file ```demo.csv``` shows the expected format.
 
 <details>
 <summary> Example </summary>
