@@ -35,7 +35,7 @@ You're good to go! A demo file ```demo.csv``` has been provided containing Ecoli
 python ScatterOverlay.py -filename demo.csv
 ```
 
-You should see these plots being displayed.
+You should see these plots being displayed below. Overlapping regions are denoted in orange while non-overlapping points are identified as differential genes.
 ![alt text](https://github.com/SnowMelody/ScatterOverlay/blob/master/scatter.png)
 
 
@@ -70,7 +70,7 @@ python ScatterOverlay.py -samples 2,4,6,8
 ```
 
 ### Marker size
-The default marker size used for the plots is 0.0125. To modify the ```size``` used (e.g. 0.03), run the following:
+The default marker size used for the plots is 0.0125. Varying the marker size directly affects number of overlapping/non-overlapping points. To modify the ```size``` used (e.g. 0.03), run the following:
 
 ```
 python ScatterOverlay.py -size 0.03
