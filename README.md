@@ -91,7 +91,7 @@ python ScatterOverlay.py -samples 2,4,6,8 -size 0.03 -colours red,blue,yellow
 ```
 
 ### Saving the output
-The ```diff_genes.csv``` file will be automatically generated after each run, containing names of differential genes. It is saved in the same directory as ```ScatterOverlay.py```. To save individual scatter plots, simply click on the save icon located below each plot.
+The ```diff_genes.csv``` file will be automatically generated after each run, containing names of differential genes. It is saved in the same directory as ```ScatterOverlay.py```. Individual scatter plots are also saved in the same location, named as ```scatter1.png```, ```scatter2.png``` and ```overlay.png```.
 
 ## About
 ScatterOverlay is a short project to showcase an alternate method of identifying differential genes, utilising visual capabilities provided by matplotlib. 
