@@ -21,6 +21,7 @@ colourlist = [str(args.colours.split(',')[0]), str(args.colours.split(',')[1]), 
 samplelist = [int(args.samples.split(',')[0]), int(args.samples.split(',')[1]), int(args.samples.split(',')[2]), int(args.samples.split(',')[3])]
 
 print('Generating scatter plots...')
+print('Plots will require some time to generate for files with large datasets.')
 start_loop = time.time()
 
 # import data and store in dataframe
@@ -122,7 +123,8 @@ df_diff_genes = pd.DataFrame(np.concatenate((df_similar, df_similar2), axis=0))
 df_diff_genes = df_diff_genes.drop_duplicates(subset=None, keep='first', inplace=False)
 
 # write files
-df_diff_genes.to_csv('diff_genes.csv', index=False)
+write_filename = args.filename.split('.csv')[0]
+df_diff_genes.to_csv('%s_diff_genes.csv'%write_filename, index=False)
 print('File written')
 
  
@@ -149,6 +151,22 @@ pts_inc = plt.scatter(x=df_inc.iloc[:,0], y=df_inc.iloc[:,1], c=colourlist[2], m
 pts_exc = plt.scatter(x=df_exc.iloc[:,0], y=df_exc.iloc[:,1], c=colourlist[0], marker='o', s=2, zorder=2)
 pts_exc2 = plt.scatter(x=df_exc2.iloc[:,0], y=df_exc2.iloc[:,1], c=colourlist[1], marker='o', s=2, zorder=2)
 plt.gca().set_aspect('equal')
+
+# make pie chart
+def make_autopct(values):
+    def my_autopct(pct):
+        total = sum(values)
+        val = int(round(pct*total/100.0))
+        return '{v:d} ({p:.2f}%)'.format(v=val, p=pct)
+    return my_autopct
+
+pc_values = [len(df_diff_genes), len(df_temp)-len(df_diff_genes)]
+pc_labels = ['DE genes', 'Non-DE genes']
+
+fig4, ax4 = plt.subplots(1, 1, num='Pie Chart', figsize=(6,6))
+ax4.pie(x=pc_values, labels=pc_labels, autopct=make_autopct(pc_values), shadow=True)
+ax4.axis('equal')  
+
 
 # set axes limits so scale unchanged during dynamic plotting (also set all to be same for comparison)
 x_min, x_max, y_min, y_max = ax.axis()
@@ -203,6 +221,11 @@ pts_exc2.set_sizes(size_pt3)
 end_loop = time.time()
 print('Scatter plots generated')
 print('Total time taken:', end_loop - start_loop)
+
+
+# save and display plots
+fig.savefig('%s_scatter1.png'%write_filename)
+fig2.savefig('%s_scatter2.png'%write_filename)
+fig3.savefig('%s_overlay.png'%write_filename)
+fig4.savefig('%s_piechart.png'%write_filename)
 plt.show()
-
-
